@@ -234,7 +234,7 @@ with open('data.json', 'r', encoding='utf-8') as f:
 
 ### Структура паттерна
 
-!["СтруктураПаттернаФасад"](/factory_manager/exam/sources/Диаграмма_классов.png)
+!["СтруктураПаттернаФасад"](/factory_manager/exam/sources/Class_diagram.png)
 
 ### Компоненты паттерна
 
