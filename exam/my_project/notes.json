@@ -1,0 +1,25 @@
+{
+  "notes": [
+    {
+      "id": 1,
+      "title": "test",
+      "content": "test",
+      "created": "2025-12-18",
+      "tags": [
+        "test",
+        "test"
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Тестовая заметка",
+      "content": "Это демонстрация работы с JSON",
+      "created": "2025-12-18",
+      "tags": [
+        "тест",
+        "демо"
+      ]
+    }
+  ],
+  "last_id": 3
+}
