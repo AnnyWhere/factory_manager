@@ -1,0 +1,23 @@
+{
+  "factory_name": "ООО 'Промышленный Завод'",
+  "workshops": [
+    {
+      "name": "test",
+      "chief": {
+        "id": "8cb97846-c843-46ed-831f-e984d58b5bec",
+        "name": "Alla",
+        "surname": "Lor",
+        "age": 32,
+        "gender": "female",
+        "post": "Начальник цеха",
+        "type": "Chief"
+      },
+      "employees": [],
+      "employee_count": 0,
+      "distribution": {}
+    }
+  ],
+  "total_workshops": 1,
+  "total_employees": 0,
+  "save_timestamp": "2025-12-19T02:41:51.107838"
+}

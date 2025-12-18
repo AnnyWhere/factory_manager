@@ -1,0 +1,52 @@
+[
+  {
+    "timestamp": "2025-12-19T02:40:59.948997",
+    "action": "Инициализация завода",
+    "details": {
+      "name": "ООО 'Промышленный Завод'"
+    }
+  },
+  {
+    "timestamp": "2025-12-19T02:40:59.950001",
+    "action": "Сохранение данных",
+    "details": {
+      "data_file": "factory_data.json"
+    }
+  },
+  {
+    "timestamp": "2025-12-19T02:40:59.951012",
+    "action": "Загрузка данных",
+    "details": {
+      "data_file": "factory_data.json"
+    }
+  },
+  {
+    "timestamp": "2025-12-19T02:41:28.595433",
+    "action": "Добавление цеха",
+    "details": {
+      "workshop_name": "test"
+    }
+  },
+  {
+    "timestamp": "2025-12-19T02:41:28.597432",
+    "action": "Создание цеха",
+    "details": {
+      "workshop_name": "test",
+      "chief": "Alla Lor"
+    }
+  },
+  {
+    "timestamp": "2025-12-19T02:41:42.296935",
+    "action": "Сохранение данных",
+    "details": {
+      "data_file": "factory_data.json"
+    }
+  },
+  {
+    "timestamp": "2025-12-19T02:41:51.109830",
+    "action": "Сохранение данных",
+    "details": {
+      "data_file": "factory_data.json"
+    }
+  }
+]
