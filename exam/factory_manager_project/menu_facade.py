@@ -220,7 +220,7 @@ class Menu:
             print("Ошибка: Начальник цеха должен быть типа 'Начальник цеха'")
             return
 
-        workshop = WorkShop(name, chief)
+        workshop = WorkShop(name, chief, [])
         self.factory.add_workshop(workshop)
         self._save_log("Создание цеха", {"workshop_name": name, "chief": str(chief)})
         print(f"Цех '{name}' успешно создан!")
@@ -355,7 +355,7 @@ class Menu:
 
         print("\nСписок цехов:")
         for i, workshop in enumerate(workshops, 1):
-            print(f"{i}. {workshop.name}")
+            print(f"{i}. {workshop.name} (работников: {len(workshop.get_employees())})")
 
         try:
             idx1 = int(input("Введите номер первого цеха: ")) - 1
@@ -366,24 +366,49 @@ class Menu:
                 w2 = workshops[idx2]
 
                 print(f"\nСравнение цехов '{w1.name}' и '{w2.name}':")
+                print("="*50)
 
                 if w1 == w2:
-                    print("Цеха имеют одинаковое распределение работников по классам!")
+                    print("✓ Цеха имеют одинаковое распределение работников по классам!")
                 else:
-                    print("Цеха имеют разное распределение работников по классам!")
+                    print("✗ Цеха имеют разное распределение работников по классам!")
 
-                print(f"\nРаспределение в '{w1.name}':")
+                print(f"\nСравнение по количеству работников:")
+                print(f"В цехе '{w1.name}': {len(w1.get_employees())} работников")
+                print(f"В цехе '{w2.name}': {len(w2.get_employees())} работников")
+
+                if w1 < w2:
+                    print(f"✓ '{w1.name}' МЕНЬШЕ чем '{w2.name}' по количеству работников")
+                if w1 > w2:
+                    print(f"✓ '{w1.name}' БОЛЬШЕ чем '{w2.name}' по количеству работников")
+                if w1 <= w2:
+                    print(f"✓ '{w1.name}' МЕНЬШЕ ИЛИ РАВЕН '{w2.name}' по количеству работников")
+                if w1 >= w2:
+                    print(f"✓ '{w1.name}' БОЛЬШЕ ИЛИ РАВЕН '{w2.name}' по количеству работников")
+
+                print(f"\nРаспределение по классам в '{w1.name}':")
                 for cls, count in w1.get_employee_class_distribution().items():
                     print(f"  {cls}: {count}")
 
-                print(f"\nРаспределение в '{w2.name}':")
+                print(f"\nРаспределение по классам в '{w2.name}':")
                 for cls, count in w2.get_employee_class_distribution().items():
                     print(f"  {cls}: {count}")
+
+                threshold = 5
+                print(f"\nСравнение с числом {threshold}:")
+                if w1 > threshold:
+                    print(f"✓ '{w1.name}' имеет больше {threshold} работников")
+                if w2 <= threshold:
+                    print(f"✓ '{w2.name}' имеет {threshold} или меньше работников")
 
                 self._save_log("Сравнение цехов", {
                     "workshop1": w1.name,
                     "workshop2": w2.name,
-                    "are_equal": w1 == w2
+                    "are_equal_distribution": w1 == w2,
+                    "workshop1_count": len(w1.get_employees()),
+                    "workshop2_count": len(w2.get_employees()),
+                    "workshop1_lt_workshop2": w1 < w2,
+                    "workshop1_gt_workshop2": w1 > w2
                 })
 
             else:

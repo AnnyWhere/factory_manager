@@ -85,7 +85,7 @@ class Factory():
             json.dump(data, f, ensure_ascii=False, indent=2)
 
         self.__save_log("Сохранение данных", {"data_file": self.__data_file})
-    
+
     def load_data(self) -> bool:
         """
         Загрузка данных завода из JSON файла.

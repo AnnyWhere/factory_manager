@@ -73,10 +73,14 @@ class WorkShop():
             Новый цех с добавленными работниками
         """
         if isinstance(other, List) and all(isinstance(i, Employee) for i in other):
-            new_workshop = WorkShop(self.name, self.__chief, self.get_employees().extend(other))
+            new_employees = self.get_employees().copy()
+            new_employees.extend(other)
+            new_workshop = WorkShop(self.name, self.__chief, new_employees)
             return new_workshop
-        if isinstance(other, Employee):
-            new_workshop = WorkShop(self.name, self.__chief, self.get_employees().append(other))
+        elif isinstance(other, Employee):
+            new_employees = self.get_employees().copy()
+            new_employees.append(other)
+            new_workshop = WorkShop(self.name, self.__chief, new_employees)
             return new_workshop
         else:
             raise TypeError("Workshop can only be added with Employee or list of Employees")
@@ -92,9 +96,11 @@ class WorkShop():
             Текущий цех с добавленными работниками
         """
         if isinstance(other, List) and all(isinstance(i, Employee) for i in other):
-            self.__employees.extend(other.get_employees())
-        if isinstance(other, Employee):
+            self.__employees.extend(other)
+            return self
+        elif isinstance(other, Employee):
             self.__employees.append(other)
+            return self
         else:
             raise TypeError("Workshop can only be added with Employee or list of Employees")
 
@@ -190,6 +196,78 @@ class WorkShop():
 
             return self_dist == other_dist
         return False
+
+    def __lt__(self, other):
+        """
+        Проверяет, меньше ли текущий цех другого цеха.
+
+        Сравнение производится по общему количеству работников.
+
+        Args:
+            other: Цех для сравнения или число
+
+        Returns:
+            True если текущий цех имеет меньше работников, иначе False
+        """
+        if isinstance(other, int):
+            return len(self.__employees) < other
+        if isinstance(other, WorkShop):
+            return len(self.__employees) < len(other.get_employees())
+        return NotImplemented
+
+    def __gt__(self, other):
+        """
+        Проверяет, больше ли текущий цех другого цеха.
+
+        Сравнение производится по общему количеству работников.
+
+        Args:
+            other: Цех для сравнения или число
+
+        Returns:
+            True если текущий цех имеет больше работников, иначе False
+        """
+        if isinstance(other, int):
+            return len(self.__employees) > other
+        if isinstance(other, WorkShop):
+            return len(self.__employees) > len(other.get_employees())
+        return NotImplemented
+
+    def __le__(self, other):
+        """
+        Проверяет, меньше или равен ли текущий цех другому цеху.
+
+        Сравнение производится по общему количеству работников.
+
+        Args:
+            other: Цех для сравнения или число
+
+        Returns:
+            True если текущий цех имеет меньше или столько же работников, иначе False
+        """
+        if isinstance(other, int):
+            return len(self.__employees) <= other
+        if isinstance(other, WorkShop):
+            return len(self.__employees) <= len(other.get_employees())
+        return NotImplemented
+
+    def __ge__(self, other):
+        """
+        Проверяет, больше или равен ли текущий цех другому цеху.
+
+        Сравнение производится по общему количеству работников.
+
+        Args:
+            other: Цех для сравнения или число
+
+        Returns:
+            True если текущий цех имеет больше или столько же работников, иначе False
+        """
+        if isinstance(other, int):
+            return len(self.__employees) >= other
+        if isinstance(other, WorkShop):
+            return len(self.__employees) >= len(other.get_employees())
+        return NotImplemented
 
     def get_employee_class_distribution(self) -> Dict[str, int]:
         """Получение распределения работников по классам."""
