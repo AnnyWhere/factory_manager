@@ -110,7 +110,7 @@ with open('data.json', 'r', encoding='utf-8') as f:
 Архитектура классов
 Система управления заводом построена на основе объектно-ориентированного подхода с использованием иерархии наследования. На диаграмме классов представлены основные классы и их отношения.
 
-![Диаграмма_классов](\exam\sources\Диаграмма_классов.png)
+![Диаграмма_классов](https://github.com/AnnyWhere/factory_manager/blob/main/exam/sources/Class_diagram.png)
 
 ### Описание классов
 
@@ -234,7 +234,7 @@ with open('data.json', 'r', encoding='utf-8') as f:
 
 ### Структура паттерна
 
-!["СтруктураПаттернаФасад"](/factory_manager/exam/sources/Class_diagram.png)
+!["СтруктураПаттернаФасад"](https://github.com/AnnyWhere/factory_manager/blob/main/exam/sources/facade_pattern_structure.png)
 
 ### Компоненты паттерна
 
